@@ -31,7 +31,7 @@ public class Table : ItemBox, IPutItemFull
     
     public bool PutItem(ItemType item)
 {
-    // ❌ Eğer yanmış etse, hiç alma bbbbbbbb
+    // ❌ Eğer yanmış etse, hiç alma 
     if (item == ItemType.BURNEDMEAT) return false;
 
     if (!isFull)
