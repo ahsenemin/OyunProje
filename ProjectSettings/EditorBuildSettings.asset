@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BolumArasiIki.unity
     guid: 59e6142c23cce4cd8b1ffa2824add85a
+  - enabled: 1
+    path: Assets/Scenes/oyunBitti.unity
+    guid: badaeb6269f034caea879d626d49358e
   m_configObjects: {}
