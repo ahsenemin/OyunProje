@@ -26,4 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/oyunBitti.unity
     guid: badaeb6269f034caea879d626d49358e
+  - enabled: 1
+    path: Assets/Scenes/loading1.unity
+    guid: d3d228376038f4ec0bf5d125b6da0532
+  - enabled: 1
+    path: Assets/Scenes/loading2.unity
+    guid: f1b1de00afe6e454c9c04ac93edbe417
+  - enabled: 1
+    path: Assets/Scenes/loading3.unity
+    guid: bdedcf59134014c4da568c40803bf26b
+  - enabled: 1
+    path: Assets/Scenes/loading4.unity
+    guid: 4676cc2cb5c244bfab080e0d5ed01d1a
+  - enabled: 1
+    path: Assets/Scenes/loading5.unity
+    guid: 69238ffadbabc426db026deea3dc9a2f
+  - enabled: 1
+    path: Assets/Scenes/loading6.unity
+    guid: 1f57aa59abd5049f8b8644e654dcb499
   m_configObjects: {}

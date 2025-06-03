@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         {
             rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
 
-            float rotationSpeed = 30f;
+            float rotationSpeed = 15f;
             transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.fixedDeltaTime * rotationSpeed);
         }
 

@@ -5,6 +5,7 @@ using TMPro;
 
 public class oyunSure : MonoBehaviour
 {
+    
     [Header("Süre Ayarları")]
     public float toplamSure = 300f; // 5 dakika (saniye cinsinden)
     public TextMeshProUGUI sureText; // UI'daki süre göstergesi
