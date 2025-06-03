@@ -994,7 +994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 571e54df4a4ad4e3bb9317abc3ffc14b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40a64e5124dbf4c8dad88168e6d68061, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 955200492}
   exitButton: {fileID: 1097278529}
-  sceneIndex: 7
+  sceneIndex: 16
 --- !u!1001 &899663265
 PrefabInstance:
   m_ObjectHideFlags: 0

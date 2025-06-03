@@ -7003,8 +7003,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -256}
-  m_SizeDelta: {x: 400, y: 512}
+  m_AnchoredPosition: {x: -200, y: -288}
+  m_SizeDelta: {x: 350, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736732061
 MonoBehaviour:
@@ -7026,7 +7026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc6b00675fe5a9548a7778e8e20bd30c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1b599e0c0c0648bcbdc67fcd815ae6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8714,7 +8714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toplamSure: 120
   sureText: {fileID: 156567275}
-  hedefSahneIndex: 0
+  hedefSahneIndex: 9
 --- !u!1001 &1027002755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16473,7 +16473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 601132428}
   targetScore: 1
-  sceneIndex: 8
+  sceneIndex: 11
 --- !u!114 &4415827119744518814
 MonoBehaviour:
   m_ObjectHideFlags: 0
