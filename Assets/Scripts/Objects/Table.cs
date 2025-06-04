@@ -30,40 +30,40 @@ public class Table : ItemBox, IPutItemFull
     }
     
     public bool PutItem(ItemType item)
-{
-    // ❌ Eğer yanmış etse, hiç alma 
-    if (item == ItemType.BURNEDMEAT) return false;
+    {
+        // ❌ Eğer yanmış etse, hiç alma 
+        if (item == ItemType.BURNEDMEAT) return false;
 
-    if (!isFull)
-    {
-        SetType(item);
-        foreach (ObjectnType itemHold in itemsToHold)
+        if (!isFull)
         {
-            if (itemHold.type != GetCurrentType())
+            SetType(item);
+            foreach (ObjectnType itemHold in itemsToHold)
             {
-                itemHold.item.SetActive(false);
+                if (itemHold.type != GetCurrentType())
+                {
+                    itemHold.item.SetActive(false);
+                }
+                else
+                {
+                    itemHold.item.SetActive(true);
+                }
             }
-            else
+            StartCoroutine(PutCoolDown());
+            return true;
+        }
+        else
+        {
+            if (GetCurrentType() == ItemType.PLATE)
             {
-                itemHold.item.SetActive(true);
+                if (item != ItemType.PLATE)
+                {
+                    StartCoroutine(PutCoolDown());
+                    return plate.PutItem(item);
+                }
             }
         }
-        StartCoroutine(PutCoolDown());
-        return true;
+        return false;
     }
-    else
-    {
-        if (GetCurrentType() == ItemType.PLATE)
-        {
-            if (item != ItemType.PLATE)
-            {
-                StartCoroutine(PutCoolDown());
-                return plate.PutItem(item);
-            }
-        }
-    }
-    return false;
-}
     private IEnumerator PutCoolDown()
     {
         yield return new WaitForEndOfFrame();

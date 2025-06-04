@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0875fd24bfbd44dec9e50a083586f8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toplamSure: 2
+  toplamSure: 120
   sureText: {fileID: 1544380979}
   hedefSahneIndex: 15
 --- !u!1 &698974433 stripped

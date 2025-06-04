@@ -11,10 +11,13 @@ public class Oven : MonoBehaviour, IPutItemFull
     [SerializeField] private GameObject burnedItem;
     [SerializeField] private UITimer timer;
     [SerializeField] private OvenBox itemBox;
-    [SerializeField] private float cookTime;
+    [SerializeField] private float minCookTime = 3f; // Minimum pişme süresi
+    [SerializeField] private float maxCookTime = 7f; // Maximum pişme süresi
     [SerializeField] private float burnTime;
+    [SerializeField] private GameObject particleEffect;
     private float currentTime;
     private float burnTimer;
+    private float cookTime; // Random pişme süresi
 
     private void Start()
     {
@@ -23,14 +26,14 @@ public class Oven : MonoBehaviour, IPutItemFull
         rawMeatball.SetActive(false);
         burnedItem.SetActive(false);
     }
+
     private void Update()
     {
         if (isFull && !isCooked)
         {
-
             currentTime += Time.deltaTime;
 
-            // Pişirme sırasında timer'ı açık tut ve yeşil göster
+            // Pişme sırasında timer'ı açık tut ve yeşil göster
             if (!timer.gameObject.activeSelf)
                 timer.gameObject.SetActive(true);
 
@@ -46,17 +49,20 @@ public class Oven : MonoBehaviour, IPutItemFull
                 isFull = false;
                 isCooked = true;
                 burnTimer = 0f;
+                particleEffect.SetActive(true);
             }
         }
         else if (isCooked)
         {
             burnTimer += Time.deltaTime;
+            
 
-        // Yanma sırasında timer'ı açık tut ve kırmızı göster
-        if (!timer.gameObject.activeSelf)
-            timer.gameObject.SetActive(true);
 
-        timer.UpdateClock(burnTimer, burnTime, true); // 🔴 yanma
+            // Yanma sırasında timer'ı açık tut ve kırmızı göster
+            if (!timer.gameObject.activeSelf)
+                timer.gameObject.SetActive(true);
+
+            timer.UpdateClock(burnTimer, burnTime, true); // 🔴 yanma
 
             if (burnTimer >= burnTime)
             {
@@ -64,25 +70,35 @@ public class Oven : MonoBehaviour, IPutItemFull
                 burnedItem.SetActive(true);
                 itemBox.SetType(ItemType.BURNEDMEAT);
                 isCooked = false;
-                timer.gameObject.SetActive(false); // ✅ Timer artık kapanabilir
+                timer.gameObject.SetActive(false);
+                particleEffect.SetActive(true);
             }
         }
     }
+
     public void CloseCookedMeatObject()
     {
         cookedItem.SetActive(false);
         burnedItem.SetActive(false);
         isCooked = false;
-        timer.gameObject.SetActive(false); // ✅ BURAYI EKLEDİK
+        timer.gameObject.SetActive(false);
+        particleEffect.SetActive(false);
     }
+
     public bool PutItem(ItemType item)
     {
         if (item != ItemType.MEATBALL) return false;
         if (isFull) return false;
+        
+        // Random pişme süresi belirle
+        cookTime = Random.Range(minCookTime, maxCookTime);
+        
         timer.gameObject.SetActive(true);
         rawMeatball.SetActive(true);
         isFull = true;
         isCooked = false;
+        particleEffect.SetActive(true);
         return true;
+        
     }
 }
