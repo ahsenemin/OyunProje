@@ -7368,7 +7368,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998879028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 609dae15e5c00d54e954369c10988d47, type: 3}
   m_Name: 
@@ -7378,9 +7378,9 @@ MonoBehaviour:
   burnedItem: {fileID: 1319114724}
   timer: {fileID: 2082368413}
   itemBox: {fileID: 998879030}
-  minCookTime: 3
-  maxCookTime: 7
-  burnTime: 5
+  minCookTime: 1
+  maxCookTime: 15
+  burnTime: 4
   particleEffect: {fileID: 268991829}
 --- !u!65 &998879032
 BoxCollider:
@@ -7395,6 +7395,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0000005, y: 1.2076882, z: 2.287856}
   m_Center: {x: 0, y: 0.6038441, z: 0.11392769}
+--- !u!114 &998879033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998879028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9456fe35d321548f5adc39fb2900c63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 0
+  isCooked: 0
+  cookedItem: {fileID: 2071713386}
+  rawMeatball: {fileID: 703846807}
+  burnedItem: {fileID: 1319114724}
+  timer: {fileID: 2082368413}
+  itemBox: {fileID: 998879030}
+  cookTime: 5
+  burnTime: 5
+  particleEffect: {fileID: 268991829}
+  currentTime: 0
+  burnTimer: 0
 --- !u!1 &1025210534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 74ec99660ce1be64a9c121fd771ce67f, type: 3}

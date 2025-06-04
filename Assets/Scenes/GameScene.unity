@@ -15207,8 +15207,8 @@ MonoBehaviour:
   burnedItem: {fileID: 1717996556}
   timer: {fileID: 490478721}
   itemBox: {fileID: 1334328106}
-  minCookTime: 1
-  maxCookTime: 15
+  minCookTime: 5
+  maxCookTime: 5
   burnTime: 4
   particleEffect: {fileID: 1180949534}
 --- !u!114 &1334328106

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
@@ -41,6 +41,58 @@ public class Inventory : MonoBehaviour
     public void ClearHand()
     {
         currentType = ItemType.NONE; 
+        itemsToHold.ForEach(obj => obj.item.SetActive(false));
+    }
+
+    public ItemType GetItem()
+    {
+        return currentType;
+    }
+}
+*/
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class ObjectnType
+{
+    public GameObject item;
+    public ItemType type;
+}
+
+public class Inventory : MonoBehaviour
+{
+    [SerializeField] private List<ObjectnType> itemsToHold = new List<ObjectnType>();
+    private ItemType currentType;
+    public ItemType CurrentType { get { return currentType; } }
+
+    private void Start()
+    {
+        currentType = ItemType.NONE;
+    }
+
+    public void TakeItem(ItemType type)
+    {
+        if (currentType != ItemType.NONE) return;
+        currentType = type;
+        foreach (ObjectnType itemHold in itemsToHold)
+        {
+            itemHold.item.SetActive(itemHold.type == type);
+        }
+    }
+
+    public ItemType PutItem()
+    {
+        if (currentType == ItemType.NONE) return ItemType.NONE;
+        ItemType itemToPut = currentType;
+        ClearHand();
+        return itemToPut;
+    }
+
+    public void ClearHand()
+    {
+        currentType = ItemType.NONE;
         itemsToHold.ForEach(obj => obj.item.SetActive(false));
     }
 
