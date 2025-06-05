@@ -6663,7 +6663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1195895196}
   cont: {fileID: 1478755253}
-  mainMenuScene: 13
+  mainMenuScene: 12
 --- !u!114 &507222201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7262,7 +7262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: facc2c0ffdc154b28aaeae15f2d62743, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b53d01fcd9c084f3c9ec40a325bdeef9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8463,18 +8463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9456fe35d321548f5adc39fb2900c63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 0
-  isCooked: 0
-  cookedItem: {fileID: 2071713386}
-  rawMeatball: {fileID: 703846807}
-  burnedItem: {fileID: 1319114724}
-  timer: {fileID: 2082368413}
-  itemBox: {fileID: 998879030}
-  cookTime: 5
-  burnTime: 5
-  particleEffect: {fileID: 268991829}
-  currentTime: 0
-  burnTimer: 0
 --- !u!1 &1025210534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 74ec99660ce1be64a9c121fd771ce67f, type: 3}
