@@ -5,7 +5,7 @@ using UnityEngine;
 public class FallingPlatform : MonoBehaviour
 {
     public float minStartDelay = 1f;
-    public float maxStartDelay = 5f;
+    public float maxStartDelay = 70f;
     public float shakeDuration = 2f;
     public float shakeAmount = 5f;
     public float fallTime = 2f;

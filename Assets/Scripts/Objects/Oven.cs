@@ -15,6 +15,7 @@ public class Oven : MonoBehaviour, IPutItemFull
     [SerializeField] private float maxCookTime = 7f; // Maximum pişme süresi
     [SerializeField] private float burnTime;
     [SerializeField] private GameObject particleEffect;
+    [SerializeField] private AudioSource cookingSound; // Pişirme sesi için AudioSource
     private float currentTime;
     private float burnTimer;
     private float cookTime; // Random pişme süresi
@@ -25,6 +26,12 @@ public class Oven : MonoBehaviour, IPutItemFull
         cookedItem.SetActive(false);
         rawMeatball.SetActive(false);
         burnedItem.SetActive(false);
+        
+        // AudioSource'u başlangıçta durdur
+        if (cookingSound != null)
+        {
+            cookingSound.Stop();
+        }
     }
 
     private void Update()
@@ -36,6 +43,10 @@ public class Oven : MonoBehaviour, IPutItemFull
             // Pişme sırasında timer'ı açık tut ve yeşil göster
             if (!timer.gameObject.activeSelf)
                 timer.gameObject.SetActive(true);
+
+            // Pişme sesini başlat
+            if (cookingSound != null && !cookingSound.isPlaying)
+                cookingSound.Play();
 
             timer.UpdateClock(currentTime, cookTime, false); // 🟢 pişirme
             if (currentTime >= cookTime)
@@ -50,13 +61,19 @@ public class Oven : MonoBehaviour, IPutItemFull
                 isCooked = true;
                 burnTimer = 0f;
                 particleEffect.SetActive(true);
+
+                // Pişme bittiğinde sesi durdur
+                if (cookingSound != null)
+                    cookingSound.Stop();
             }
         }
         else if (isCooked)
         {
             burnTimer += Time.deltaTime;
             
-
+            // Yanma sırasında da ses çalmaya devam et
+            if (cookingSound != null && !cookingSound.isPlaying)
+                cookingSound.Play();
 
             // Yanma sırasında timer'ı açık tut ve kırmızı göster
             if (!timer.gameObject.activeSelf)
@@ -83,6 +100,10 @@ public class Oven : MonoBehaviour, IPutItemFull
         isCooked = false;
         timer.gameObject.SetActive(false);
         particleEffect.SetActive(false);
+        
+        // Item alındığında sesi durdur
+        if (cookingSound != null)
+            cookingSound.Stop();
     }
 
     public bool PutItem(ItemType item)
