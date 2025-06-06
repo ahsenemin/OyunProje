@@ -6060,6 +6060,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8104200111488009332, guid: 684b6a2a12780154fb3db9f5f1b4ada8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b1ae2d994f2adb0428de80a49a9e07c1, type: 3}
     - target: {fileID: 8104200111488009333, guid: 684b6a2a12780154fb3db9f5f1b4ada8, type: 3}
       propertyPath: m_RootOrder
       value: 18
