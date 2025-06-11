@@ -19,7 +19,7 @@ public class CustomerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (currentTime <=Random.Range(50,80))//spawnRate is random between 50 and 80 seconds
+        if (currentTime <=Random.Range(50,80))// rastgele bir değer ile karşılaştır
         {
             currentTime += Time.deltaTime*timerSpeed;
         }

@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ObjectnType> itemsToHold = new List<ObjectnType>();
     private ItemType currentType;
-    public ItemType CurrentType { get { return currentType; } }
+    public ItemType CurrentType { get { return currentType; } } // Property to access currentType
 
     private void Start()
     {
@@ -22,15 +22,15 @@ public class Inventory : MonoBehaviour
 
     public void TakeItem(ItemType type)
     {
-        if (currentType != ItemType.NONE) return;
+        if (currentType != ItemType.NONE) return; // EĞER HALDE ELDE BİR ÖGE VARSA YENİSİNİ ALMA
         currentType = type;
-        foreach (ObjectnType itemHold in itemsToHold)
+        foreach (ObjectnType itemHold in itemsToHold) // Tüm ögeleri kontrol et
         {
-            itemHold.item.SetActive(itemHold.type == type);
+            itemHold.item.SetActive(itemHold.type == type);  // Eğer öge türü eşleşiyorsa, o ögeyi aktif et
         }
     }
 
-    public ItemType PutItem()
+    public ItemType PutItem() // Ögeyi elden bırakma işlemi
     {
         if (currentType == ItemType.NONE) return ItemType.NONE;
         ItemType itemToPut = currentType;

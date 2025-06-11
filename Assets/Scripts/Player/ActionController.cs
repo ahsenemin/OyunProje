@@ -21,7 +21,7 @@ public class ActionController : MonoBehaviour
     private bool isProcessing = false;
     private bool canPut = true;
 
-    private void Awake()
+    private void Awake() // Awake metodu, bileşenler henüz başlatılmadan önce çağrılır
     {
         canPut = true;
         anim = GetComponent<Animator>();
@@ -29,7 +29,7 @@ public class ActionController : MonoBehaviour
         takeCooldown = new WaitForSeconds(0.5f);
     }
 
-    private void Start()
+    private void Start() // Start metodu, bileşenler başlatıldıktan sonra çağrılır
     {
         UpdateScoreText();
     }
@@ -63,17 +63,17 @@ public class ActionController : MonoBehaviour
         }
     }
 
-    private void DoAction()
+    private void DoAction() 
     {
         anim.SetTrigger("Take");
     }
 
-    private void StartProcessAction()
+    private void StartProcessAction() // StartProcessAction, oyuncunun etkileşimde bulunabileceği bir nesneye bakar
     {
-        Ray ray = new Ray(transform.position + Vector3.up / 2, transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1))
+        Ray ray = new Ray(transform.position + Vector3.up / 2, transform.forward); // Oyuncunun bakış yönünde bir ışın oluşturur
+        if (Physics.Raycast(ray, out RaycastHit hit, 1)) // Işın, 1 birim mesafeye kadar çarpar
         {
-            if (hit.collider.TryGetComponent<Functionality>(out Functionality itemProcess))
+            if (hit.collider.TryGetComponent<Functionality>(out Functionality itemProcess)) // Eğer çarpan nesne Functionality bileşenine sahipse
             {
                 isProcessing = true;
                 currentFunction = itemProcess;
@@ -81,7 +81,7 @@ public class ActionController : MonoBehaviour
         }
     }
 
-    private void DoProcessAction()
+    private void DoProcessAction() // DoProcessAction, eğer isProcessing true ise ve currentFunction null değilse, işlemi gerçekleştirir
     {
         if (!isProcessing) return;
         if (!isWorking) return;
@@ -94,12 +94,12 @@ public class ActionController : MonoBehaviour
         }
     }
 
-    public void DoTakeAction()
+    public void DoTakeAction() // ALMA VERME İŞLERİ
     {
         Ray ray = new Ray(transform.position + Vector3.up / 2, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, 1))
         {
-            // Try to pick up from ItemBox first if hand is empty
+            // Eliniz boşsa önce ItemBox'tan almayı deneyin
             if (inventory.CurrentType == ItemType.NONE)
             {
                 if (hit.collider.TryGetComponent<ItemBox>(out ItemBox itemBox))
@@ -114,7 +114,7 @@ public class ActionController : MonoBehaviour
                 }
             }
 
-            // Try to put item on table or other container
+            // Öğeyi masaya veya başka bir kaba koymayı deneyin
             if (canPut && inventory.CurrentType != ItemType.NONE)
             {
                 if (hit.collider.TryGetComponent<IPutItemFull>(out IPutItemFull container))
@@ -129,7 +129,7 @@ public class ActionController : MonoBehaviour
             }
         }
     }
-
+   // elinde hamburger varsa ve satış alanında ise, E tuşuna basınca hamburger satılır,
     private void OnTriggerStay(Collider other)
     {
         if (inventory.CurrentType != ItemType.HAMBURGER) return;
@@ -143,7 +143,7 @@ public class ActionController : MonoBehaviour
             }
         }
     }
-
+    // sonra kısa bir süre beklenir, ardından tekrar koyma izni verilir.
     private IEnumerator canPutCoolDown()
     {
         canPut = false;
@@ -151,6 +151,7 @@ public class ActionController : MonoBehaviour
         canPut = true;
     }
 
+    // Eğer bir hamburger satış alanına bırakılırsa skor artırılır.
     public void ItemDropped(ItemType itemType, Vector3 position)
     {
         if (IsInSellArea(position) && itemType == ItemType.HAMBURGER)
@@ -158,7 +159,7 @@ public class ActionController : MonoBehaviour
             IncreaseScore();
         }
     }
-
+     // Verilen pozisyonun satış alanı içinde olup olmadığını kontrol eder.
     private bool IsInSellArea(Vector3 position)
     {
         GameObject sellArea = GameObject.FindGameObjectWithTag("SellArea");
@@ -173,6 +174,7 @@ public class ActionController : MonoBehaviour
         return false;
     }
 
+    // Skoru bir artırır, ekrana yazar ve hedefe ulaşıldıysa sahneyi değiştirir.
     private void IncreaseScore()
     {
         currentScore++;
@@ -190,6 +192,7 @@ public class ActionController : MonoBehaviour
         }
     }
 
+    // Skor bilgisini ekranda günceller.
     private void UpdateScoreText()
     {
         if (scoreText != null)
