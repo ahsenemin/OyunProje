@@ -9738,7 +9738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0875fd24bfbd44dec9e50a083586f8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toplamSure: 120
+  toplamSure: 3
   sureText: {fileID: 156567275}
   hedefSahneIndex: 9
 --- !u!1001 &1027002755
