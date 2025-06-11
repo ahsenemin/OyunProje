@@ -36,7 +36,7 @@ public class Oven : MonoBehaviour, IPutItemFull
 
     private void Update()
     {
-        if (isFull && !isCooked)
+        if (isFull && !isCooked) // Eğer fırın doluysa ve pişmemişse
         {
             currentTime += Time.deltaTime;
 
@@ -49,7 +49,7 @@ public class Oven : MonoBehaviour, IPutItemFull
                 cookingSound.Play();
 
             timer.UpdateClock(currentTime, cookTime, false); // 🟢 pişirme
-            if (currentTime >= cookTime)
+            if (currentTime >= cookTime) // Pişme süresi dolduğunda
             {
                 currentTime = 0;
                 timer.gameObject.SetActive(false);
@@ -67,7 +67,7 @@ public class Oven : MonoBehaviour, IPutItemFull
                     cookingSound.Stop();
             }
         }
-        else if (isCooked)
+        else if (isCooked) // Eğer fırın pişmişse
         {
             burnTimer += Time.deltaTime;
             
@@ -81,7 +81,7 @@ public class Oven : MonoBehaviour, IPutItemFull
 
             timer.UpdateClock(burnTimer, burnTime, true); // 🔴 yanma
 
-            if (burnTimer >= burnTime)
+            if (burnTimer >= burnTime) // Yanma süresi dolduğunda
             {
                 cookedItem.SetActive(false);
                 burnedItem.SetActive(true);
@@ -93,7 +93,7 @@ public class Oven : MonoBehaviour, IPutItemFull
         }
     }
 
-    public void CloseCookedMeatObject()
+    public void CloseCookedMeatObject() // Fırın kutusundan pişmiş et nesnesini kapat
     {
         cookedItem.SetActive(false);
         burnedItem.SetActive(false);
@@ -105,21 +105,22 @@ public class Oven : MonoBehaviour, IPutItemFull
         if (cookingSound != null)
             cookingSound.Stop();
     }
-
+    // PutItem metodu, sadece MEATBALL türündeki öğeleri kabul eder
+    // ve fırın dolu değilse öğeyi pişirmeye başlar.
     public bool PutItem(ItemType item)
     {
         if (item != ItemType.MEATBALL) return false;
         if (isFull) return false;
-        
+
         // Random pişme süresi belirle
         cookTime = Random.Range(minCookTime, maxCookTime);
-        
+
         timer.gameObject.SetActive(true);
         rawMeatball.SetActive(true);
         isFull = true;
         isCooked = false;
         particleEffect.SetActive(true);
         return true;
-        
+
     }
 }

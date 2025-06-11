@@ -28,19 +28,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) inputVector.y -= 1;
 
         inputVector = inputVector.normalized;
-        input = new Vector3(inputVector.x, 0f, inputVector.y);
+        input = new Vector3(inputVector.x, 0f, inputVector.y); // 💡 Y eksenini sıfırlıyoruz, çünkü 2D düzlemde hareket ediyoruz
     }
 
     private void FixedUpdate()
     {
         Vector3 moveDirection = input;
 
-        if (moveDirection != Vector3.zero)
+        if (moveDirection != Vector3.zero) // 💡 Hareket yönü sıfır değilse
         {
-            rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime); // 🟢 Fizik motoru ile hareket ettiriyoruz
 
             float rotationSpeed = 15f;
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.fixedDeltaTime * rotationSpeed);
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.fixedDeltaTime * rotationSpeed); // 🔄 Yönlendirme işlemi
         }
 
         UpdateAnimations(); // 💡 Hareketin gerçekten gerçekleşip gerçekleşmediğini burada kontrol edeceğiz
@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
     private void UpdateAnimations()
     {
         // 💡 Gerçek pozisyon farkı kontrolü
-        float distanceMoved = Vector3.Distance(transform.position, lastPosition);
-        bool isMoving = distanceMoved > 0.001f;
+        float distanceMoved = Vector3.Distance(transform.position, lastPosition); // 🔍 Son pozisyon ile şu anki pozisyon arasındaki mesafe
+        bool isMoving = distanceMoved > 0.001f; // 🟢 Küçük bir eşik değeri kullanarak hareketi kontrol ediyoruz
 
         anim.SetBool("isMoving", isMoving);
     }

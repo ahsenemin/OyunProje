@@ -2005,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e49bb344704fc3ba42a40320c1446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
 --- !u!114 &369079489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 226409536}
   targetScore: 1
-  sceneIndex: 4
+  sceneIndex: 6
 --- !u!114 &369079490
 MonoBehaviour:
   m_ObjectHideFlags: 0
