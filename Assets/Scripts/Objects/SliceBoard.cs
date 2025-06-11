@@ -5,11 +5,17 @@ using UnityEngine;
 public class SliceBoard : Functionality,IPutItemFull
 {
     [SerializeField] private List<ObjectnType> itemsToHold = new List<ObjectnType>();
-    private ItemType currentType; 
+    [SerializeField] private AudioSource cutingSound; // kesme sesi için AudioSource
+    private ItemType currentType;
     private void Start()
     {
         currentType = ItemType.NONE;
         timer.gameObject.SetActive(false);
+        
+        if (cutingSound != null)
+        {
+            cutingSound.Stop();
+        }
     }
     public override ItemType Process()
     {
@@ -17,6 +23,9 @@ public class SliceBoard : Functionality,IPutItemFull
         if (processStarted == true && timer.gameObject.activeSelf == false)
         {
             timer.gameObject.SetActive(true);
+            if (cutingSound != null && !cutingSound.isPlaying)
+                cutingSound.Play();
+
         }
         processStarted = true;
         currentTime += Time.deltaTime;
@@ -25,6 +34,10 @@ public class SliceBoard : Functionality,IPutItemFull
         {
             currentTime = 0;
             timer.gameObject.SetActive(false);
+            
+            if (cutingSound != null)
+                cutingSound.Stop();
+
             processStarted = false;
             timer.UpdateClock(currentTime, maxTime);
             switch (currentType)
