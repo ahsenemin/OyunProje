@@ -19,28 +19,30 @@ public class CustomerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (currentTime <=Random.Range(50,80))// rastgele bir değer ile karşılaştır
+        if (currentTime <=Random.Range(50,80))// müşteri random oluşturma süresi
         {
-            currentTime += Time.deltaTime*timerSpeed;
+            currentTime += Time.deltaTime*timerSpeed; // zaman ilerlemesi
         }
         else
         {
             currentTime = 0;
             Vector3 spawnPos = spawnPoint.position + (spawnPoint.forward * -1 * customerList.Count)+spawnPoint.right*Random.Range(-lrRandom, lrRandom);
+            // Müşterinin spawn pozisyonu, spawn noktasının gerisinde ve sağa/sola rastgele kaydırılmış bir şekilde pozisyon ayarlıyor
             Customer temp = Instantiate(customerPrefabs[Random.Range(0,customerPrefabs.Count)], spawnPos, spawnPoint.rotation);
-            customerList.Enqueue(temp);
+            // Rastgele müşteri prefab'ı oluşturma (rastgele bir müşteri türü seçiliyor)
+            customerList.Enqueue(temp); // Müşteriyi kuyruğa ekleme 
         } 
     }
-    public void SellToCustomer()
+    public void SellToCustomer() // ilk müşteriyi exitpoint'e yönlendirir ve kuyruğun başındaki müşteriyi çıkarır
     {
-        if (customerList.Count == 0) return;
-        Customer firstCustomer=customerList.Peek();
-        firstCustomer.ExitFromArea(exitPoint.position);
+        if (customerList.Count == 0) return; 
+        Customer firstCustomer=customerList.Peek(); 
+        firstCustomer.ExitFromArea(exitPoint.position); 
         customerList.Dequeue();
         for(int i = 0; i < customerList.Count; i++)
         {
-            Vector3 nextPos = spawnPoint.position + (spawnPoint.forward * -1 * i) + spawnPoint.right * Random.Range(-lrRandom, lrRandom);
-            customerList.ToArray()[i].MoveNext(nextPos);
+            Vector3 nextPos = spawnPoint.position + (spawnPoint.forward * -1 * i) + spawnPoint.right * Random.Range(-lrRandom, lrRandom); // Müşterilerin yeni pozisyonları
+            customerList.ToArray()[i].MoveNext(nextPos); // Müşterileri yeni pozisyonlarına yönlendirme
         } 
 
     }
