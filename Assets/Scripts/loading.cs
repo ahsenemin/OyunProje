@@ -7,6 +7,8 @@ public class loading : MonoBehaviour
 {
     [SerializeField] private float beklemeSuresi = 3f; // 3 saniye bekleme süresi
     [SerializeField] private int nextScene = 1;
+
+    [SerializeField] private AudioSource cookingSound; // Pişirme sesi için AudioSource
     void Start()
     {
         RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
@@ -15,6 +17,11 @@ public class loading : MonoBehaviour
         RenderSettings.ambientLight = Color.white;
 
         StartCoroutine(SahneyeGec());
+
+        if (cookingSound != null)
+        {
+            cookingSound.Play();
+        }
     }
 
     IEnumerator SahneyeGec()

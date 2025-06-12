@@ -14,18 +14,19 @@ public class ItemBox : MonoBehaviour,IGetItem
             getSound.Stop();
         }
     }
-    public virtual ItemType GetItem()
+    public virtual ItemType GetItem() //eldeki ürünü kontrol eder. 
     {
         if (getSound != null && !getSound.isPlaying)
                 getSound.Play();
         return item;
     } 
 
-    public void SetType(ItemType type)
+    public void SetType(ItemType type) // Öğe tipini ayarla.unityden ayarlamasını sağlar. nesnenin türünü ayarlar
+    // Bu metot, ItemType enum'undan bir değer alır ve item değişkenine atar.
     {
         item = type;
     }
-    public ItemType GetCurrentType()
+    public ItemType GetCurrentType() // elimizde hangi öge olduğunu döndürür. oyun sırasında nesnenin ne olduğunu kontrol eder.
     {
         return item;
     }

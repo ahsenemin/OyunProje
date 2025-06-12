@@ -67,7 +67,7 @@ public class Oven : MonoBehaviour, IPutItemFull
                     cookingSound.Stop();
             }
         }
-        else if (isCooked) // Eğer fırın pişmişse
+        else if (isCooked) // Eğer et pişmişse
         {
             burnTimer += Time.deltaTime;
             
@@ -107,7 +107,7 @@ public class Oven : MonoBehaviour, IPutItemFull
     }
     // PutItem metodu, sadece MEATBALL türündeki öğeleri kabul eder
     // ve fırın dolu değilse öğeyi pişirmeye başlar.
-    public bool PutItem(ItemType item)
+    public bool PutItem(ItemType item) // IPutItemFull arayüzünden gelen metot
     {
         if (item != ItemType.MEATBALL) return false;
         if (isFull) return false;

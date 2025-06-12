@@ -10,6 +10,8 @@ public class ElectricManager : MonoBehaviour
     public float minTimeBetweenCuts = 5f;   // Elektrik kesintileri arasındaki minimum süre
     public float maxTimeBetweenCuts = 10f;  // Maksimum süre
 
+    
+
     private int currentCuts = 0;
     private bool powerOn = true;
     private bool isCuttingPower = false;

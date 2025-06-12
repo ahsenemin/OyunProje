@@ -10,7 +10,7 @@ public class Plate : MonoBehaviour
     public bool isDone = false;
     public bool PutItem(ItemType type)
     {
-        if (currentObjectIndex > objects.Count-1) return false;
+        if (currentObjectIndex > objects.Count-1) return false; // Eğer tüm ögeler zaten eklendiyse, yeni öge ekleme
         if (type == objects[currentObjectIndex].type)
         {
             objects[currentObjectIndex].item.SetActive(true);

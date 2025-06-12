@@ -8,7 +8,7 @@ public class TableBox : ItemBox,IPutItemFull
     public bool canTake;
     private bool isFull;
     public bool IsFull {   get { return isFull; } }
-    public override ItemType GetItem()
+    public override ItemType GetItem() 
     {
         if (isFull)
         {
@@ -19,7 +19,7 @@ public class TableBox : ItemBox,IPutItemFull
         return ItemType.NONE;
     }
 
-    public bool PutItem(ItemType item)
+    public bool PutItem(ItemType item) 
     {
         if (!IsFull)
         {

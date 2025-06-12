@@ -7,10 +7,12 @@ public class TeleportOnTouch : MonoBehaviour
     public GameObject dogCharacter; // Inspector'dan Dog karakterini sürükleyerek atayacaksın
     public Vector3 spawnPoint = new Vector3(-75.327f, 29.762f, -1.908f);
     private Inventory playerInventory;
+    private ItemBox itemBox;
 
     private void Start()
     {
         playerInventory = dogCharacter.GetComponent<Inventory>();
+        itemBox = dogCharacter.GetComponent<ItemBox>();
     }
 
     private void OnTriggerEnter(Collider other)

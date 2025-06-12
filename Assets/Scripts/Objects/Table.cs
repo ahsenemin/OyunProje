@@ -19,10 +19,10 @@ public class Table : ItemBox, IPutItemFull
         }
     }
 
-    public override ItemType GetItem()
+    public override ItemType GetItem() // Eğer tabak doluysa, hamburger al
     {
         if (GetCurrentType() == ItemType.PLATE && plate.isDone == false) { return ItemType.NONE; }
-        else if (plate.isDone)
+        else if (plate.isDone) // hamburger hazır olduğunda hamburgeri alabilir kodu
         {
             StartCoroutine(ChangeType());
             plate.ResetPlate();
@@ -40,7 +40,7 @@ public class Table : ItemBox, IPutItemFull
         return ItemType.NONE;
     }
 
-    public bool PutItem(ItemType item)
+    public bool PutItem(ItemType item) // Eğer tabak doluysa, hamburger alma
     {
         // ❌ Eğer yanmış etse, hiç alma
         if (item == ItemType.BURNEDMEAT) return false;
@@ -56,7 +56,7 @@ public class Table : ItemBox, IPutItemFull
             }
         }
 
-        if (!isFull && GetCurrentType() == ItemType.NONE)
+        if (!isFull && GetCurrentType() == ItemType.NONE) 
         {
             SetType(item);
             if (putSound != null && !putSound.isPlaying)
@@ -73,7 +73,7 @@ public class Table : ItemBox, IPutItemFull
         return false;
     }
 
-    private IEnumerator PutCoolDown()
+    private IEnumerator PutCoolDown() 
     {
         yield return new WaitForEndOfFrame();
         isFull = true;

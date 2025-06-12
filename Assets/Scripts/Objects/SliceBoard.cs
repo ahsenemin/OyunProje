@@ -56,15 +56,15 @@ public class SliceBoard : Functionality,IPutItemFull
         }
         return ItemType.NONE;
     }
-    public override void ClearObject()
+    public override void ClearObject() // Ögeyi temizleme işlemi
     {
         base.ClearObject();
-        currentType = ItemType.NONE;
-        itemsToHold.ForEach(obj => obj.item.SetActive(false));
+        currentType = ItemType.NONE;// Mevcut türü NONE olarak ayarla
+        itemsToHold.ForEach(obj => obj.item.SetActive(false)); // Tüm ögeleri pasif yap
     }
-    public bool PutItem(ItemType item)
+    public bool PutItem(ItemType item) // Ögeyi kesme tahtasına koyma işlemi
     {
-        if (FilterItem(item)==false) return false;
+        if (FilterItem(item)==false) return false; // Eğer öge kesilebilir değilse, false döndür
         if (currentType != ItemType.NONE) return false;
         currentType = item;
         foreach (ObjectnType itemHold in itemsToHold)
