@@ -31,5 +31,7 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 *   **3D Varlıklar:** Oyunda [Kay Lousberg](https://kaylousberg.itch.io) tarafından oluşturulan 3D varlıklar kullanılmıştır.
 *   **Animasyon:** Projede DOTween kütüphanesinden yararlanılmıştır.
 
+images/1.png
+
 ---
 Bu README dosyası, projenin daha sonraki aşamalarında detaylı bilgilerle güncellenecektir.
